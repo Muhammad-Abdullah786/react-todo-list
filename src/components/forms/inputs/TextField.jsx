@@ -1,24 +1,7 @@
-import {
-    forwardRef, useImperativeHandle
-} from 'react'
+import React from "react";
 
-const TextField  = forwardRef(({placeholder}, ref) =>{
-    useImperativeHandle(ref, ()=>{
-        return {
-         getChildData : ()  =>{
-            return "this data"
-         }
-        }
-    })
-    // console.log( "pp ", props, ref);
-    return(
-        <input 
-        placeholder={placeholder}
-        ref={ref}
-        style={{
-            padding: "5px 20px"
-        }}
-        />
-        )
-    })
+function TextField() {
+  return <h1>TODO App</h1>;
+}
+
 export default TextField;
