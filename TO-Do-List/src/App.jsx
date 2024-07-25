@@ -12,15 +12,25 @@ function App() {
     // in new array create a new object
     setTodo((prev) => [{ id: Date.now(), ...title }, ...prev]);
   };
-   
-  const updateTodo = (id, title) => {
-    setTodo((prev)=> prev.map((prevTodo) => prevTodo.id === id ? title :  prevTodo))
 
-  }
-  
+  const updateTodo = (id, title) => {
+    setTodo((prev) =>
+      prev.map((prevTodo) => (prevTodo.id === id ? title : prevTodo))
+    );
+  };
+  const toggleComplete = (id) => {
+    setTodo((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo === id
+          ? { ...prevTodo, completed: !prevTodo.completed }
+          : prevTodo
+      )
+    );
+  };
+
   const deleteTodo = (id) => {
     // Delete Todo Logic here
-    setTodo((prev) => prev.filter((todo) => todo.id !== id ))
+    setTodo((prev) => prev.filter((todo) => todo.id !== id));
   };
   return (
     <TodoProvider
