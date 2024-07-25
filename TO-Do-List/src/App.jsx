@@ -14,14 +14,13 @@ function App() {
   };
    
   const updateTodo = (id, title) => {
-    setTodo((prev) => prev.map((prevTodo) => prevTodo.id === id ? title: prevTodo))
+    setTodo((prev)=> prev.map((prevTodo) => prevTodo.id === id ? title :  prevTodo))
+
   }
   
   const deleteTodo = (id) => {
-    // one way is to use map and found what id is going to delete
-    // in prev.map we are getting each todo meaning prev is opject but 
-    //prevTodo is each todo
-    setTodo((prev)=> prev.map((prevTodo) => prevTodo.id === id ? : ))
+    // Delete Todo Logic here
+    setTodo((prev) => prev.filter((todo) => todo.id !== id ))
   };
   return (
     <TodoProvider
