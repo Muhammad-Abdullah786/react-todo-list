@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTodo, TodoProvider, TodosContext } from "./contexts/index";
 
 import "./App.css";
@@ -32,6 +32,21 @@ function App() {
     // Delete Todo Logic here
     setTodo((prev) => prev.filter((todo) => todo.id !== id));
   };
+
+
+  // Local Storage Starts from here
+  //now assume someone goes to this site i want to bring all the todo he had written long time ago which hook should i use
+
+  // useEffect(() => {
+
+    useEffect(() => {
+      first
+    
+      return () => {
+        second
+      }
+    }, [third])
+    
   return (
     <TodoProvider
       value={{ todo, addTodo, deleteTodo, updateTodo, toggleComplete }}
