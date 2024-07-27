@@ -33,20 +33,25 @@ function App() {
     setTodo((prev) => prev.filter((todo) => todo.id !== id));
   };
 
-
   // Local Storage Starts from here
   //now assume someone goes to this site i want to bring all the todo he had written long time ago which hook should i use
 
   // useEffect(() => {
 
-    useEffect(() => {
-      first
-    
-      return () => {
-        second
-      }
-    }, [third])
-    
+  // this code is just to  get the todos when someone load my website
+  useEffect(() => {
+    // the value given will be in string
+    const todos = JSON.parse(localStorage.getItem("todos"));
+    // to check whether todos exist or not if it does not exist it will crash
+    if (todos && todo.length > 0) {
+      setTodo(todos);
+    }
+  }, []);
+
+  // but what about when some one add new todo in the list i will have to make another useeffect to save the todo in local storage when ever the todo state changes
+useEffect(() =>{
+  localStorage.setItem("todos", JSON.stringify(todos))
+}, [todos])
   return (
     <TodoProvider
       value={{ todo, addTodo, deleteTodo, updateTodo, toggleComplete }}
