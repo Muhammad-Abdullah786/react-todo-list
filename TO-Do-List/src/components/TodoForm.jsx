@@ -10,13 +10,16 @@ function TodoForm() {
   const add = (e) => {
     e.preventDefault();
     if (!todo) return; // there is no id why? because it is already define in app.jsx
-    addTodo({ todo: todo, compeleted: false }); // we will put it in object WHY ???  goto app.jsx line no . 9
+    addTodo({ todo: todo, completed: false }); // we will put it in object WHY ???  goto app.jsx line no . 9
     // all todo are in array and new todo will be in an object
     //then why should i put string only we have to put string in an object
+    setTodo(""); // to clean up the input feild so we can write another todo msg
   };
   return (
-    <form className="flex items-center space-x-2">
+    <form onSubmit={add} className="flex items-center space-x-2">
       <input
+        value={todo}
+        onChange={(e) => setTodo(e.target.value)}
         type="text"
         placeholder="Write Todo..."
         className="flex-1 border-2 border-green-600 rounded-l-lg px-4 py-2 outline-none focus:ring-2 focus:ring-green-500 bg-white/90 shadow-md transition-all duration-200"
