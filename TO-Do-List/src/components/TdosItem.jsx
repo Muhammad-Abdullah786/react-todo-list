@@ -32,7 +32,7 @@ function TodoItem({ todo }) {
         type="checkbox"
         className="cursor-pointer h-6 w-6 accent-green-600"
         checked={todo.completed}
-        onChange={toggleComplete}
+        onChange={toggleTodo}
       />
       <input
         type="text"
@@ -55,7 +55,7 @@ function TodoItem({ todo }) {
         onClick={() => {
           if (todo.completed) return;
           if (isTodoEditable) {
-            editTodo();
+            edit();
           } else setIsTodoEditable((prev) => !prev);
         }}
         disabled={todo.completed}

@@ -22,7 +22,7 @@ function App() {
   const toggleComplete = (id) => {
     setTodo((prev) =>
       prev.map((prevTodo) =>
-        prevTodo === id
+        prevTodo.id === id
           ? { ...prevTodo, completed: !prevTodo.completed }
           : prevTodo
       )
@@ -42,10 +42,10 @@ function App() {
   // this code is just to  get the todos when someone load my website
   useEffect(() => {
     // the value given will be in string
-    const todos = JSON.parse(localStorage.getItem("todos"));
+    const todo = JSON.parse(localStorage.getItem("todos"));
     // to check whether todos exist or not if it does not exist it will crash
-    if (todos && todo.length > 0) {
-      setTodo(todos);
+    if (todo && todo.length > 0) {
+      setTodo(todo);
     }
   }, []);
 

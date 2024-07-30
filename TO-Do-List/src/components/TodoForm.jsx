@@ -10,7 +10,7 @@ function TodoForm() {
   const add = (e) => {
     e.preventDefault();
     if (!todo) return; // there is no id why? because it is already define in app.jsx
-    addTodo({ todo: todo, completed: false }); // we will put it in object WHY ???  goto app.jsx line no . 9
+    addTodo({ title: todo, completed: false }); // we will put it in object WHY ???  goto app.jsx line no . 9
     // all todo are in array and new todo will be in an object
     //then why should i put string only we have to put string in an object
     setTodo(""); // to clean up the input feild so we can write another todo msg
