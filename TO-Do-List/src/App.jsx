@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useTodo, TodoProvider, TodosContext } from "./contexts/index";
-
+import TodoForm from "./components/TodoForm";
 import "./App.css";
+import TodoItem from "./components/TdosItem";
 
 function App() {
   const [todo, setTodo] = useState([]);
@@ -49,9 +50,9 @@ function App() {
   }, []);
 
   // but what about when some one add new todo in the list i will have to make another useeffect to save the todo in local storage when ever the todo state changes
-useEffect(() =>{
-  localStorage.setItem("todos", JSON.stringify(todos))
-}, [todos])
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todo));
+  }, [todo]);
   return (
     <TodoProvider
       value={{ todo, addTodo, deleteTodo, updateTodo, toggleComplete }}
@@ -61,9 +62,18 @@ useEffect(() =>{
           <h1 className="text-2xl font-bold text-center mb-8 mt-2">
             Manage Your Todos
           </h1>
-          <div className="mb-4">{/* Todo form goes here */}</div>
+          <div className="mb-4">
+            <TodoForm />
+          </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
+            {todo.map((eachTodoItem) => {
+              return (
+                <div key={eachTodoItem.id}>
+                  <TodoItem todo={eachTodoItem} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
